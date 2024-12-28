@@ -15,12 +15,24 @@ const app= express() //podemos llamarle app o como queramos pero lo mas habitual
 
 app.get("/",(req,res)=>{ //HOME
   res.send(`
-    <h1>HOME</h1> <a href="/marketing">marketing</a> <a href="/ventas">ventas</a> <a href="/developers">developers</a> <a href="/QAs">QAs</a>`+req.path)// `req.path` para obtener el path actual y muestra esa información en la respuesta.
-  console.log(req.path)
+    <a href="/marketing">marketing</a> <a href="/ventas">ventas</a> <a href="/developers">developers</a> <a href="/QAs">QAs</a>`+req.path+`<h1>HOME</h1>` )// `req.path` para obtener el path actual y muestra esa información en la respuesta.
+    console.log(req.path)
 })
 
 app.get("/marketing",(req,res)=>{//MARKETING
-  res.send(`<h1>MARKETING</h1> <a href="/">home</a>`+req.path)// `req.path` para obtener el path actual y muestra esa información en la respuesta.
+  res.send(`
+  <a href="/">home</a>`+req.path+` 
+  <!DOCTYPE html>
+      <html>
+        <head>
+          <title>MARKETING</title>
+        </head>
+        <body>
+          <h1>MARKETING</h1> 
+          <li>${usersData.name}</li>
+        </body>
+      </html>`)
+  
   console.log(req.path)
 })
 
@@ -90,20 +102,29 @@ principal (/)
     { id: 29, name: 'Cynthia', age: 32, specialty: 'ventas' },
     { id: 30, name: 'Derek', age: 30, specialty: 'marketing' },
   ];
+  console.log(usersData)
 
 
 const marketingSpecialty=usersData.filter (user=>user.specialty==="marketing")
-console.log(marketingSpecialty)
+console.log("Detalle de cada usuario:", marketingSpecialty)//detalle de cada usuario
+console.log("Total de usuarios:" ,marketingSpecialty.length) //contador usuarios en cada especialidad
 
 const ventasSpecialty=usersData.filter (user=>user.specialty==="ventas")
-console.log(ventasSpecialty)
+console.log("Detalle de cada usuario:", ventasSpecialty)//detalle de cada usuario
+console.log("Total de usuarios:",ventasSpecialty.length)//contador usuarios en cada especialidad
 
 const developersSpecialty=usersData.filter (user=>user.specialty==="developers")
-console.log(developersSpecialty)
+console.log("Detalle de cada usuario:", developersSpecialty)//detalle de cada usuario
+console.log("Total de usuarios:" , developersSpecialty.length)//contador usuarios en cada especialidad
 
 const qasSpecialty=usersData.filter (user=>user.specialty==="QAs")
-console.log(qasSpecialty)
+console.log("Detalle de cada usuario:", qasSpecialty)//detalle de cada usuario
+console.log("Total de usuarios:" ,qasSpecialty.length)//contador usuarios en cada especialidad
 
 /*4. Generación de Páginas HTML:
   - Utiliza literal string para construir páginas HTML directamente en el código..
   - Crea una página para cada especialidad que muestre el título de la página, el número de personas y los detalles de cada usuario.*/
+
+
+  
+
