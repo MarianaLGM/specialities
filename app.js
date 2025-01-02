@@ -7,7 +7,13 @@
   - Crea rutas para la página principal (/) y diferentes especialidades como marketing (/marketing), developers (/developers), etc...
   - Implementa el manejo de errores 404 para rutas no definidas.
   - Las rutas serán las mismas de las `specialty` (abajo hay un objeto con datos que usarás para crear lo qiue pide el ejercicio)
-*/
+
+
+
+/*4. Generación de Páginas HTML:
+  - Utiliza literal string para construir páginas HTML directamente en el código..
+  - Crea una página para cada especialidad que muestre el título de la página, el número de personas y los detalles de cada usuario.*/
+
 
 
 const express=require ("express")
@@ -19,9 +25,17 @@ app.get("/",(req,res)=>{ //HOME
     console.log(req.path)
 })
 
+
+
 app.get("/marketing",(req,res)=>{//MARKETING
+const marketingSpecialty=usersData.filter (user=>user.specialty==="marketing")
+for(let i=0; i<=marketingSpecialty.length;i++)
+  {
+    let id= marketingSpecialty [i].id;
+    let nombre= marketingSpecialty [i].name;
+    let edad=marketingSpecialty[i].age;
   res.send(`
-  <a href="/">home</a>`+req.path+` 
+  <a href="/">home</a>${req.path} 
   <!DOCTYPE html>
       <html>
         <head>
@@ -29,27 +43,85 @@ app.get("/marketing",(req,res)=>{//MARKETING
         </head>
         <body>
           <h1>MARKETING</h1> 
-          <li>${usersData.name}</li>
+          <h2>Total de usuarios con especialidad en Marketing: ${marketingSpecialty.length}</h2>
+          <ul>
+          <li>Id: ${id}, Nombre: ${nombre}, Edad: ${edad} años</li>
+          
+         </ul>
         </body>
       </html>`)
   
   console.log(req.path)
+}
 })
 
+
 app.get("/developers",(req,res)=>{//DEVELOPERS
-    res.send(`<h1>DEVELOPERS</h1><a href="/">home</a>`+req.path)// `req.path` para obtener el path actual y muestra esa información en la respuesta.
+  const developersSpecialty=usersData.filter (user=>user.specialty==="developers")
+  developersSpecialty.forEach((user) => {
+    res.send(`
+      <a href="/">home</a>${req.path} 
+      <!DOCTYPE html>
+          <html>
+            <head>
+              <title>DEVELOPERS</title>
+            </head>
+            <body>
+              <h1>DEVELOPERS</h1> 
+              <h2>Total de usuarios con especialidad en Developers: ${developersSpecialty.length}</h2>
+              <ul>
+              <li>Id: ${user.id}, Nombre: ${user.name}, Edad: ${user.age} años</li>
+             </ul>
+            </body>
+          </html>`)// `req.path` para obtener el path actual y muestra esa información en la respuesta.
     console.log(req.path)
   })
-  
+})
+
+
 app.get("/QAs",(req,res)=>{//QAs
-    res.send(`<h1>QAs</h1><a href="/">home</a>`+req.path)// `req.path` para obtener el path actual y muestra esa información en la respuesta.
+  const qasSpecialty=usersData.filter (user=>user.specialty==="QAs")
+  qasSpecialty.forEach((user) => {
+    res.send(`
+      <a href="/">home</a>${req.path} 
+      <!DOCTYPE html>
+          <html>
+            <head>
+              <title>QAs</title>
+            </head>
+            <body>
+              <h1>QAs</h1> 
+              <h2>Total de usuarios con especialidad en QAs: ${qasSpecialty.length}</h2>
+              <ul>
+              <li>Id: ${user.id}, Nombre: ${user.name}, Edad: ${user.age} años</li>
+             </ul>
+            </body>
+          </html>`)// `req.path` para obtener el path actual y muestra esa información en la respuesta.
     console.log(req.path)
   })
+})
 
 app.get("/ventas",(req,res)=>{//VENTAS
-    res.send(`<h1>VENTAS</h1><a href="/">home</a>`+req.path)// `req.path` para obtener el path actual y muestra esa información en la respuesta.
+  const ventasSpecialty=usersData.filter (user=>user.specialty==="ventas")
+  ventasSpecialty.forEach((user) => {
+    res.send(`
+      <a href="/">home</a>${req.path} 
+      <!DOCTYPE html>
+          <html>
+            <head>
+              <title>VENTAS</title>
+            </head>
+            <body>
+              <h1>VENTAS</h1> 
+              <h2>Total de usuarios con especialidad en Ventas: ${ventasSpecialty.length}</h2>
+              <ul>
+              <li>Id: ${user.id}, Nombre: ${user.name}, Edad: ${user.age} años</li>
+             </ul>
+            </body>
+          </html>`)// `req.path` para obtener el path actual y muestra esa información en la respuesta.
     console.log(req.path)
   })
+})
 
 app.use((req,res)=>{//ERROR 404
   res.status(404).send(`<h1>Página no encontrada</h1><a href="/">home</a>`+req.path)// `req.path` para obtener el path actual y muestra esa información en la respuesta.
@@ -105,6 +177,7 @@ principal (/)
   console.log(usersData)
 
 
+
 const marketingSpecialty=usersData.filter (user=>user.specialty==="marketing")
 console.log("Detalle de cada usuario:", marketingSpecialty)//detalle de cada usuario
 console.log("Total de usuarios:" ,marketingSpecialty.length) //contador usuarios en cada especialidad
@@ -121,10 +194,5 @@ const qasSpecialty=usersData.filter (user=>user.specialty==="QAs")
 console.log("Detalle de cada usuario:", qasSpecialty)//detalle de cada usuario
 console.log("Total de usuarios:" ,qasSpecialty.length)//contador usuarios en cada especialidad
 
-/*4. Generación de Páginas HTML:
-  - Utiliza literal string para construir páginas HTML directamente en el código..
-  - Crea una página para cada especialidad que muestre el título de la página, el número de personas y los detalles de cada usuario.*/
 
-
-  
 
