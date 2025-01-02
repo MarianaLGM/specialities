@@ -25,103 +25,152 @@ app.get("/",(req,res)=>{ //HOME
     console.log(req.path)
 })
 
+//////////////////MARKETING////////////////////////
+app.get("/marketing", (req, res) => {
+  const marketingSpecialty = usersData.filter(
+    (user) => user.specialty === "marketing"
+  );
+
+  // Construir el contenido HTML dinámicamente
+  let content = `
+    <a href="/">home</a>${req.path}
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>MARKETING</title>
+      </head>
+      <body>
+        <h1>MARKETING</h1> 
+        <h2>Total de usuarios especializados en Marketing: ${marketingSpecialty.length}</h2>
+        <ul>
+  `;
+
+  // Agregar cada usuario al contenido
+  marketingSpecialty.forEach((user) => {
+    content += `<li>Id: ${user.id}, Nombre: ${user.name}, Edad: ${user.age} años</li>`;
+  });
+
+  // Finalizar el HTML
+  content += `
+  </ul>
+  </body>
+  </html>
+  `;
+
+  // Enviar todo el contenido al cliente
+  res.send(content);
+});
 
 
-app.get("/marketing",(req,res)=>{//MARKETING
-const marketingSpecialty=usersData.filter (user=>user.specialty==="marketing")
-for(let i=0; i<=marketingSpecialty.length;i++)
-  {
-    let id= marketingSpecialty [i].id;
-    let nombre= marketingSpecialty [i].name;
-    let edad=marketingSpecialty[i].age;
-  res.send(`
-  <a href="/">home</a>${req.path} 
-  <!DOCTYPE html>
-      <html>
-        <head>
-          <title>MARKETING</title>
-        </head>
-        <body>
-          <h1>MARKETING</h1> 
-          <h2>Total de usuarios especializados en Marketing: ${marketingSpecialty.length}</h2>
-          <ul>
-          <li>Id: ${id}, Nombre: ${nombre}, Edad: ${edad} años</li>
-          
-         </ul>
-        </body>
-      </html>`)
-  
-  console.log(req.path)
-}
-})
+//////////////////DEVELOPERS////////////////////////
 
+app.get("/developers",(req,res)=>{
+  const marketingSpecialty = usersData.filter(
+    (user) => user.specialty === "developers"
+  );
 
-app.get("/developers",(req,res)=>{//DEVELOPERS
-  const developersSpecialty=usersData.filter (user=>user.specialty==="developers")
+  // Construir el contenido HTML dinámicamente
+  let content = `
+    <a href="/">home</a>${req.path}
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>DEVELOPERS</title>
+      </head>
+      <body>
+        <h1>DEVELOPERS</h1> 
+        <h2>Total de usuarios especializados en Marketing: ${developersSpecialty.length}</h2>
+        <ul>
+  `;
+
+  // Agregar cada usuario al contenido
   developersSpecialty.forEach((user) => {
-    res.send(`
-      <a href="/">home</a>${req.path} 
-      <!DOCTYPE html>
-          <html>
-            <head>
-              <title>DEVELOPERS</title>
-            </head>
-            <body>
-              <h1>DEVELOPERS</h1> 
-              <h2>Total de usuarios especializados en Developers: ${developersSpecialty.length}</h2>
-              <ul>
-              <li>Id: ${user.id}, Nombre: ${user.name}, Edad: ${user.age} años</li>
-             </ul>
-            </body>
-          </html>`)// `req.path` para obtener el path actual y muestra esa información en la respuesta.
-    console.log(req.path)
-  })
-})
+    content += `<li>Id: ${user.id}, Nombre: ${user.name}, Edad: ${user.age} años</li>`;
+  });
 
+  // Finalizar el HTML
+  content += `
+  </ul>
+  </body>
+  </html>
+  `;
 
-app.get("/QAs",(req,res)=>{//QAs
-  const qasSpecialty=usersData.filter (user=>user.specialty==="QAs")
+  // Enviar todo el contenido al cliente
+  res.send(content);
+});
+
+//////////////////QAs////////////////////////
+
+app.get("/QAs",(req,res)=>{
+  const quasSpecialty = usersData.filter(
+    (user) => user.specialty === "developers"
+  );
+
+  // Construir el contenido HTML dinámicamente
+  let content = `
+    <a href="/">home</a>${req.path}
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>QAs</title>
+      </head>
+      <body>
+        <h1>QAs</h1> 
+        <h2>Total de usuarios especializados en Marketing: ${qasSpecialty.length}</h2>
+        <ul>
+  `;
+
+  // Agregar cada usuario al contenido
   qasSpecialty.forEach((user) => {
-    res.send(`
-      <a href="/">home</a>${req.path} 
-      <!DOCTYPE html>
-          <html>
-            <head>
-              <title>QAs</title>
-            </head>
-            <body>
-              <h1>QAs</h1> 
-              <h2>Total de usuarios especializados en QAs: ${qasSpecialty.length}</h2>
-              <ul>
-              <li>Id: ${user.id}, Nombre: ${user.name}, Edad: ${user.age} años</li>
-             </ul>
-            </body>
-          </html>`)// `req.path` para obtener el path actual y muestra esa información en la respuesta.
-    console.log(req.path)
-  })
-})
+    content += `<li>Id: ${user.id}, Nombre: ${user.name}, Edad: ${user.age} años</li>`;
+  });
 
+  // Finalizar el HTML
+  content += `
+  </ul>
+  </body>
+  </html>
+  `;
+
+  // Enviar todo el contenido al cliente
+  res.send(content);
+});
+
+//////////////////VENTAS////////////////////////
 app.get("/ventas",(req,res)=>{//VENTAS
-  const ventasSpecialty=usersData.filter (user=>user.specialty==="ventas")
+  const quasSpecialty = usersData.filter(
+    (user) => user.specialty === "developers"
+  );
+
+  // Construir el contenido HTML dinámicamente
+  let content = `
+    <a href="/">home</a>${req.path}
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>VENTAS</title>
+      </head>
+      <body>
+        <h1>VENTAS</h1> 
+        <h2>Total de usuarios especializados en Marketing: ${ventasSpecialty.length}</h2>
+        <ul>
+  `;
+
+  // Agregar cada usuario al contenido
   ventasSpecialty.forEach((user) => {
-    res.send(`
-      <a href="/">home</a>${req.path} 
-      <!DOCTYPE html>
-          <html>
-            <head>
-              <title>VENTAS</title>
-            </head>
-            <body>
-              <h1>VENTAS</h1> 
-              <h2>Total de usuarios especializados en Ventas: ${ventasSpecialty.length}</h2>
-              <ul>
-              <li>Id: ${user.id}, Nombre: ${user.name}, Edad: ${user.age} años</li>
-             </ul>
-            </body>
-          </html>`)// `req.path` para obtener el path actual y muestra esa información en la respuesta.
-    console.log(req.path)
-  })
-})
+    content += `<li>Id: ${user.id}, Nombre: ${user.name}, Edad: ${user.age} años</li>`;
+  });
+
+  // Finalizar el HTML
+  content += `
+  </ul>
+  </body>
+  </html>
+  `;
+
+  // Enviar todo el contenido al cliente
+  res.send(content);
+});
 
 app.use((req,res)=>{//ERROR 404
   res.status(404).send(`<h1>Página no encontrada</h1><a href="/">home</a>`+req.path)// `req.path` para obtener el path actual y muestra esa información en la respuesta.
@@ -131,6 +180,7 @@ app.use((req,res)=>{//ERROR 404
 app.listen(3000,()=>{
  console.log("Node.js esta escuchando en el puerto 3000");
 });
+
 
 /*
 principal (/)
