@@ -43,7 +43,7 @@ for(let i=0; i<=marketingSpecialty.length;i++)
         </head>
         <body>
           <h1>MARKETING</h1> 
-          <h2>Total de usuarios con especialidad en Marketing: ${marketingSpecialty.length}</h2>
+          <h2>Total de usuarios especializados en Marketing: ${marketingSpecialty.length}</h2>
           <ul>
           <li>Id: ${id}, Nombre: ${nombre}, Edad: ${edad} años</li>
           
@@ -68,7 +68,7 @@ app.get("/developers",(req,res)=>{//DEVELOPERS
             </head>
             <body>
               <h1>DEVELOPERS</h1> 
-              <h2>Total de usuarios con especialidad en Developers: ${developersSpecialty.length}</h2>
+              <h2>Total de usuarios especializados en Developers: ${developersSpecialty.length}</h2>
               <ul>
               <li>Id: ${user.id}, Nombre: ${user.name}, Edad: ${user.age} años</li>
              </ul>
@@ -91,7 +91,7 @@ app.get("/QAs",(req,res)=>{//QAs
             </head>
             <body>
               <h1>QAs</h1> 
-              <h2>Total de usuarios con especialidad en QAs: ${qasSpecialty.length}</h2>
+              <h2>Total de usuarios especializados en QAs: ${qasSpecialty.length}</h2>
               <ul>
               <li>Id: ${user.id}, Nombre: ${user.name}, Edad: ${user.age} años</li>
              </ul>
@@ -113,7 +113,7 @@ app.get("/ventas",(req,res)=>{//VENTAS
             </head>
             <body>
               <h1>VENTAS</h1> 
-              <h2>Total de usuarios con especialidad en Ventas: ${ventasSpecialty.length}</h2>
+              <h2>Total de usuarios especializados en Ventas: ${ventasSpecialty.length}</h2>
               <ul>
               <li>Id: ${user.id}, Nombre: ${user.name}, Edad: ${user.age} años</li>
              </ul>
